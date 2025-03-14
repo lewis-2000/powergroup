@@ -1,0 +1,23 @@
+{
+  "templates": [
+    {
+      "id": "powergroup",
+      "name": "Power Group",
+      "mode":0,
+      "components": [
+        {
+          "component": "ContributionDashboard",
+          "data": {
+            "contributions": [
+              { "id": 1, "name": "Alice Johnson", "amount": 100, "status": "Paid", "date": "2025-03-01" },
+              { "id": 2, "name": "Bob Smith", "amount": 50, "status": "Unpaid", "date": null },
+              { "id": 3, "name": "Charlie Davis", "amount": 75, "status": "Paid", "date": "2025-03-05" },
+              { "id": 4, "name": "Diana Evans", "amount": 200, "status": "Paid", "date": "2025-03-08" }
+            ]
+          },
+          "settings": {}
+        }
+      ]
+    }
+  ]
+}

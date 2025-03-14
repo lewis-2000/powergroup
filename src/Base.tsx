@@ -14,6 +14,19 @@ const Base: React.FC<BaseProps> = ({ id }) => {
   >(undefined);
   const [isTemplatesLoaded, setIsTemplatesLoaded] = useState(false);
 
+  ////////////////////////////////////////////////////////////////
+
+  // TemplateManagerAPI.getAllTemplates().forEach((template) => {
+  //   const templateId = template.id;
+  //   const fetchedTemplate = TemplateManagerAPI.getTemplate(templateId);
+
+  //   fetchedTemplate?.components.forEach((component) => {
+  //     console.log("Component Data:", component.data);
+  //   });
+  // });
+
+  ////////////////////////////////////////////////////////////////
+
   // Load all templates on mount
   useEffect(() => {
     const loadTemplates = async () => {

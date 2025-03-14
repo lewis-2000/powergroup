@@ -1,49 +1,50 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import TemplateManagerAPI from "./templateManagerAPI";
-import { templateTypes } from "../types/templateTypes";
-import BasicHero from "../components/samples/BasicHero";
-import Footer from "../components/samples/Footer";
-import Hero from "../components/samples/Hero";
+import { templateTypes, templateJsonType } from "../types/templateTypes";
 import axios from "axios";
+import { ComponentType } from "react";
 
-// Component Map
-const componentMap: Record<string, React.ComponentType<any>> = {
-  BasicHero,
-  Footer,
-  Hero,
+import ContributionTable from "../components/ContributionTable";
+import ContributionDashboard from "../components/ContributionDashboard";
+
+// Define a component map for dynamic resolution
+const componentMap: Record<string, ComponentType<any>> = {
+  ContributionTable,
+  ContributionDashboard,
 };
 
-// Function to load templates and register them with the TemplateManagerAPI
+// Function to load templates and register them with TemplateManagerAPI
 export const loadTemplates = async (): Promise<void> => {
   try {
-    // Fetch template JSON from the server
-    const response = await axios.get<templateTypes[]>("/templates.json");
-    const jsonTemplates = response.data;
+    // Fetch template JSON
+    const response = await axios.get<{ templates: templateJsonType[] }>("/templates.json");
+    const jsonTemplates = response.data.templates;
+
+    // Convert JSON structure to match `templateTypes`
+    const templates: templateTypes[] = jsonTemplates.map((template) => ({
+      ...template,
+      components: template.components.map(({ component, data, settings }) => ({
+        // 🔥 Convert component name string to actual React component
+        component: componentMap[component] || (() => null),
+        data,
+        settings,
+      })),
+    }));
 
     // Register each template
-    jsonTemplates.forEach((template) => {
-      const templateComponents = template.components.map(
-        ({ component, data }) => {
-          const resolvedComponent =
-            componentMap[component.name] || (() => null);
-          return { component: resolvedComponent, data };
-        }
-      );
-
-      // Register the template with the API
-      TemplateManagerAPI.registerTemplate({
-        ...template,
-        components: templateComponents,
-      });
+    templates.forEach((template) => {
+      TemplateManagerAPI.registerTemplate(template);
     });
 
-    // console.log(      "JsonTemplateRegistry: Templates successfully loaded and registered."    );
+    console.log("JsonTemplateRegistry: Templates successfully loaded and registered.");
   } catch (error) {
     console.error("Error loading templates:", error);
   }
 };
 
+
 // Load templates on startup
 loadTemplates();
+
 
 export default {};

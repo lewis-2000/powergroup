@@ -1,11 +1,12 @@
 import "./App.css";
-import "./modules/templateRegistry";
+// import "./modules/templateRegistry";
+import "./modules/JsonTemplateRegistry";
 import Base from "./Base";
 
 function App() {
   return (
     <>
-      <Base id="enoch" />
+      <Base id="powergroup" />
     </>
   );
 }
