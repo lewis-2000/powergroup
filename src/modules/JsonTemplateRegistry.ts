@@ -4,13 +4,17 @@ import { templateTypes, templateJsonType } from "../types/templateTypes";
 import axios from "axios";
 import { ComponentType } from "react";
 
-import ContributionTable from "../components/ContributionTable";
-import ContributionDashboard from "../components/ContributionDashboard";
+// import ContributionTable from "../components/ContributionTable";
+// import ContributionDashboard from "../components/ContributionDashboard";
+// import Signup from "../pages/Signup";
+import Dashboard from "../pages/Dashboard";
 
 // Define a component map for dynamic resolution
 const componentMap: Record<string, ComponentType<any>> = {
-  ContributionTable,
-  ContributionDashboard,
+  // ContributionTable,
+  // ContributionDashboard,
+  // Signup,
+  Dashboard,
 };
 
 // Function to load templates and register them with TemplateManagerAPI

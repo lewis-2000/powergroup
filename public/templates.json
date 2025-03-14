@@ -16,7 +16,21 @@
             ]
           },
           "settings": {}
+        },
+        {
+          "component":"Signup",
+          "data": {
+            "title": "Join Our Community",
+            "description": "Sign up for our newsletter to stay updated on new projects and events."
+          },
+          "settings": {}
+        },
+        {
+          "component": "Dashboard",
+          "data": {},
+          "settings": {}
         }
+
       ]
     }
   ]
