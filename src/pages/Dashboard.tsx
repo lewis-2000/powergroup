@@ -98,7 +98,7 @@ const Dashboard: React.FC = () => {
       <div className="p-6 flex items-center gap-6">
         <div className="w-24 h-24 bg-gray-300 rounded-full flex items-center justify-center text-2xl font-bold text-gray-700">
           <img
-            src="/defaultImage.png"
+            src="/powergroup/defaultImage.png"
             alt="Profile"
             className="w-12 h-12 rounded-full"
           />

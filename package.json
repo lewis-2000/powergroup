@@ -1,7 +1,8 @@
 {
-  "name": "flwebcore",
+  "name": "powergroup",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "homepage": "https://lewis-2000.github.io/powergroup",
   "type": "module",
   "scripts": {
     "dev": "vite",

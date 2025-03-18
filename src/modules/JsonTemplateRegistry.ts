@@ -21,7 +21,7 @@ const componentMap: Record<string, ComponentType<any>> = {
 export const loadTemplates = async (): Promise<void> => {
   try {
     // Fetch template JSON
-    const response = await axios.get<{ templates: templateJsonType[] }>("/templates.json");
+    const response = await axios.get<{ templates: templateJsonType[] }>("/powergroup/templates.json");
     const jsonTemplates = response.data.templates;
 
     // Convert JSON structure to match `templateTypes`
